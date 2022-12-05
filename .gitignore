@@ -1,3 +1,9 @@
+#arvhivos de Intellij Idea
+.mvn
+mvnw.cmd
+mvnw
+
+
 # Compiled class file
 *.class
 
@@ -23,7 +29,7 @@
 hs_err_pid*
 
 HELP.md
-*/target/
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
