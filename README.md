@@ -1,3 +1,4 @@
 # Intellij-Idea-Ultimate
 
-Repositorio para pruebas de código en diferentes lenguajes
+Repositorio para código de Intellij-Idea-Ultimate
+
