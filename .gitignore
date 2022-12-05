@@ -31,7 +31,6 @@ HELP.md
 #Carpetas y archivos que se suelen crear en Intelli Idea
 .mvn
 src/test
-.gitignore
 mvnw.cmd
 mvnw
 
