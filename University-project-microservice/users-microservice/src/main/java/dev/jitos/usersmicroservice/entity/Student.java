@@ -17,7 +17,9 @@ public class Student {
     private String name;
     private String surname;
     private String email;
+
     @Column(name = "create_at")
+    @Temporal(TemporalType.TIMESTAMP) //Guarda fecha y hora
     private Date createAt;
 
     /**
