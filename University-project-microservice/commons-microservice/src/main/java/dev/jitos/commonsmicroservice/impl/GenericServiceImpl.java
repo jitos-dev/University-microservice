@@ -22,8 +22,9 @@ import java.util.Optional;
 @Service
 public class GenericServiceImpl<E, R extends JpaRepository<E, Long>> implements GenericService<E> {
 
+    //Lo marcamos protected para poder utilizarlo en las clases que hereden de esta
     @Autowired
-    private R repository;
+    protected R repository;
 
     @Override
     @Transactional(readOnly = true)
