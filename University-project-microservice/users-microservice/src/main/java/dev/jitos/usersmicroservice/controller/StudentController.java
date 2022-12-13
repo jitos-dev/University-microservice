@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController("/student")
+/*No le ponemos path porque se la vamos a signar en el Api Gateway Zuul*/
+@RestController
+@RequestMapping("students")
 public class StudentController {
 
     @Autowired
@@ -55,7 +57,7 @@ public class StudentController {
      * @return respuesta que recibimos al guardarlo
      */
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(Student student, @RequestBody Long id) {
+    public ResponseEntity<?> update(@RequestBody Student student, @PathVariable Long id) {
         Optional<Student> optional = service.findById(id);
 
         if (optional.isEmpty()) {
