@@ -51,8 +51,12 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<version>3.1.4</version>
 		</dependency>
-
-
+		<!--Esta libreria la creo yo y esta en el mismo proyecto-->
+		<dependency>
+			<groupId>dev.jitos</groupId>
+			<artifactId>commons-microservice</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
