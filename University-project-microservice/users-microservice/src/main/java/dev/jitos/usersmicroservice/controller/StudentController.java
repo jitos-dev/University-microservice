@@ -11,7 +11,7 @@ import java.util.Optional;
 
 /*No le ponemos path porque se la vamos a signar en el Api Gateway Zuul*/
 @RestController
-@RequestMapping("studentsPUBLI")
+@RequestMapping("students")
 public class StudentController extends GenericController<Student, StudentService> {
 
 //    @Autowired

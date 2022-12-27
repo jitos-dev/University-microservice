@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/*Comento el @RequestMapping porque en gateway-zuul ya tiene la ruta a courses*/
 @RestController
-@RequestMapping("courses")
+//@RequestMapping("courses")
 public class CourseController extends GenericController<Course, CourseService> {
 
     @PutMapping({"/{id}"})
