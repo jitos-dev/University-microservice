@@ -2,10 +2,7 @@ package dev.jitos.usersmicroservice.controller;
 
 import dev.jitos.commonsmicroservice.controller.GenericController;
 import dev.jitos.usersmicroservice.entity.Student;
-import dev.jitos.usersmicroservice.impl.StudentServiceImpl;
 import dev.jitos.usersmicroservice.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +11,7 @@ import java.util.Optional;
 
 /*No le ponemos path porque se la vamos a signar en el Api Gateway Zuul*/
 @RestController
-@RequestMapping("students")
+@RequestMapping("studentsPUBLI")
 public class StudentController extends GenericController<Student, StudentService> {
 
 //    @Autowired
