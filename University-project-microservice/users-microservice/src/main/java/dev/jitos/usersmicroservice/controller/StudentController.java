@@ -1,7 +1,6 @@
 package dev.jitos.usersmicroservice.controller;
-
 import dev.jitos.commonsmicroservice.controller.GenericController;
-import dev.jitos.usersmicroservice.entity.Student;
+import dev.jitos.commonsstudent.entity.Student;
 import dev.jitos.usersmicroservice.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

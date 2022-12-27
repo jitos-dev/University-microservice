@@ -1,4 +1,4 @@
-package dev.jitos.usersmicroservice.entity;
+package dev.jitos.commonsstudent.entity;
 
 import lombok.Getter;
 import lombok.Setter;

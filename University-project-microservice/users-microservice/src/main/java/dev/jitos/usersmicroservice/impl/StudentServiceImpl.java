@@ -1,7 +1,7 @@
 package dev.jitos.usersmicroservice.impl;
 
 import dev.jitos.commonsmicroservice.impl.GenericServiceImpl;
-import dev.jitos.usersmicroservice.entity.Student;
+import dev.jitos.commonsstudent.entity.Student;
 import dev.jitos.usersmicroservice.repository.StudentRepository;
 import dev.jitos.usersmicroservice.service.StudentService;
 import org.springframework.stereotype.Service;

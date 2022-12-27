@@ -1,7 +1,7 @@
 package dev.jitos.usersmicroservice.service;
 
 import dev.jitos.commonsmicroservice.service.GenericService;
-import dev.jitos.usersmicroservice.entity.Student;
+import dev.jitos.commonsstudent.entity.Student;
 
 /**
  * Servicio para trabajar con la entidad Alumno. Creamos el servicio para desacoplar las operaciones
