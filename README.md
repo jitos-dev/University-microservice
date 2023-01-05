@@ -1,4 +1,6 @@
-# Intellij-Idea-Ultimate
+# University-project-microservice
 
-Repositorio para código de Intellij-Idea-Ultimate
+Proyecto aún en desarrollo 
+
+Proyecto de microservicios de prueba para emular el funcionamiento de una universidad con diferentes microservicios y la comunicación entre ellos
 
