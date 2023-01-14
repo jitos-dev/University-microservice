@@ -10,6 +10,11 @@ import java.util.List;
 @Repository("studentRepository")
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query("SELECT Student FROM Student WHERE name like %?1% or surname like %?1%")
+    /*Para realizar una "Query" hay que hacerlo de esta forma para que no de error. Al utilizar
+    * like no distingue entre mayúsculas y minúsculas*/
+    @Query("SELECT s FROM Student s WHERE s.name like %?1% or s.surname like %?1%")
     List<Student> findByNameOrSurname(String value);
+
+    //Esta es otra forma de hacerlo
+    //List<Student> findByNameLikeOrSurnameLike(String value);
 }

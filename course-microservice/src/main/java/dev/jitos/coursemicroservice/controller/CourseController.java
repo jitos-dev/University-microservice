@@ -62,4 +62,12 @@ public class CourseController extends GenericController<Course, CourseService> {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(courseDB));
     }
 
+    @GetMapping("/student/{id}")
+    public ResponseEntity<?> findCourseByStudentId(@PathVariable Long id) {
+        if (id == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(service.findCourseByStudentId(id));
+    }
+
 }

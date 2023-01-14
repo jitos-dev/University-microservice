@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 /*No le ponemos path porque se la vamos a signar en el Api Gateway Zuul*/
@@ -69,6 +70,16 @@ public class StudentController extends GenericController<Student, StudentService
         studentDB.setEmail(student.getEmail());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(studentDB));
+    }
+
+
+    @GetMapping("/filter/{value}")
+    public ResponseEntity<?> filter(@PathVariable String value) {
+
+        if (value == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(service.findByNameOrSurname(value));
     }
 
 //    /**
