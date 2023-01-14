@@ -5,6 +5,9 @@ import dev.jitos.commonsstudent.entity.Student;
 import dev.jitos.usersmicroservice.repository.StudentRepository;
 import dev.jitos.usersmicroservice.service.StudentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Implementación del servicio de la entity Student. Los métodos los marcamos con @Transactional. Los
@@ -14,4 +17,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl extends GenericServiceImpl<Student, StudentRepository> implements StudentService {
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Student> findByNameOrSurname(String value) {
+        return repository.findByNameOrSurname(value);
+    }
 }
