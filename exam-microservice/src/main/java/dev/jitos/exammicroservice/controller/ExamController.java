@@ -1,8 +1,7 @@
 package dev.jitos.exammicroservice.controller;
 
+import dev.jitos.commonsexam.Exam;
 import dev.jitos.commonsmicroservice.controller.GenericController;
-import dev.jitos.exammicroservice.entity.Exam;
-import dev.jitos.exammicroservice.entity.Question;
 import dev.jitos.exammicroservice.service.ExamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+/*La entity Exam y Question la hemos sacado a una librería aparte porque la vamos a utilizar en otros microservicios*/
 @RestController
 public class ExamController extends GenericController<Exam, ExamService> {
 
