@@ -1,5 +1,6 @@
-package dev.jitos.exammicroservice.entity;
+package dev.jitos.commonsexam;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,16 +16,19 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String text;
 
+
     /*Esto es por la relación de la columna porque cuando guardemos una pregunta
-    * va relacionada con un Exam por el valor exam_id
-    * Aquí a diferencia de Exam con @JsonIgnoreProperties(value = "{questions}") ignoramos el atributo
-    * questions que es la lista de Questions de la entity Exam*/
+     * va relacionada con un Exam por el valor exam_id
+     * Aquí a diferencia de Exam con @JsonIgnoreProperties(value = "{questions}") ignoramos el atributo
+     * questions que es la lista de Questions de la entity Exam
+     * @JsonBackReference es para que no de error por la referencia con la tabla Exam. Esto lo que hace es que
+     * que json pueda manejar referencias bidireccionales*/
     @JsonIgnoreProperties(value = "{questions}")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exam_id")
+    @JsonBackReference
     private Exam exam;
 
     @Override

@@ -5,27 +5,32 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.7</version>
+        <version>2.7.8</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dev.jitos</groupId>
-    <artifactId>commons-student</artifactId>
+    <artifactId>commons-exam</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>commons-student</name>
-    <description>commons-student</description>
+    <name>commons-exam</name>
+    <description>commons-exam</description>
     <properties>
         <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--Esta libreria biene con Spring starter web pero como no lo estamos utilizando tenemos
+        que incluirla nosotros a mano para las anotaciones de la entidad-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
     </dependencies>
 </project>
