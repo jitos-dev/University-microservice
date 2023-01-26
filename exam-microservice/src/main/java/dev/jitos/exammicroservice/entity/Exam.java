@@ -2,6 +2,7 @@ package dev.jitos.exammicroservice.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,9 +34,12 @@ public class Exam {
     *   @JsonIgnoreProperties(value = "{exam}") es porque cuando consultamos a la bbdd el resultado nos va a
     * devolver también la referencia de la tabla Quextion a Exam y esto no lo queremos porque crea un bucle infinito
     * allowSetters = true esto es porque aunque queremos eliminar el campo examen si que queremos la lista de Question
-    * y esto es para que utilice los setter para crearla*/
+    * y esto es para que utilice los setter para crearla
+    * @JsonManagedReference es para que no de error por la relación con la tabla questions. Esto lo que hace es que
+    * que json pueda manejar referencias bidireccionales*/
     @JsonIgnoreProperties(value = "{exam}", allowSetters = true)
     @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Question> questions;
 
     @PrePersist
@@ -46,6 +50,7 @@ public class Exam {
     public Exam() {
         this.questions = new ArrayList<>();
     }
+
 
     /*Este método es para añadir preguntas al array. Como añadimos una pregunta tenemos que darle referencia del examen
     * y para esto lo hacemos con setExam y le pasamos this porque es el examen en el que estamos*/
