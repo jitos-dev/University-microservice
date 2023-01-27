@@ -1,6 +1,6 @@
 package dev.jitos.exammicroservice.controller;
 
-import dev.jitos.commonsexam.Exam;
+import dev.jitos.commons_exam.entity.Exam;
 import dev.jitos.commonsmicroservice.controller.GenericController;
 import dev.jitos.exammicroservice.service.ExamService;
 import org.springframework.http.HttpStatus;

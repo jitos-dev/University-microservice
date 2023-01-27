@@ -1,4 +1,4 @@
-package dev.jitos.commonsexam;
+package dev.jitos.commons_exam.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
