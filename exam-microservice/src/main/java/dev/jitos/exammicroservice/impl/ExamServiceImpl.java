@@ -1,6 +1,6 @@
 package dev.jitos.exammicroservice.impl;
 
-import dev.jitos.commonsexam.Exam;
+import dev.jitos.commons_exam.entity.Exam;
 import dev.jitos.commonsmicroservice.impl.GenericServiceImpl;
 import dev.jitos.exammicroservice.repository.ExamRepository;
 import dev.jitos.exammicroservice.service.ExamService;
