@@ -1,5 +1,6 @@
 package dev.jitos.coursemicroservice.controller;
 
+import dev.jitos.commons_exam.entity.Exam;
 import dev.jitos.commonsmicroservice.controller.GenericController;
 import dev.jitos.commonsstudent.entity.Student;
 import dev.jitos.coursemicroservice.entity.Course;
@@ -35,31 +36,12 @@ public class CourseController extends GenericController<Course, CourseService> {
     * haciendo es modificando un objeto de la entity Course*/
     @PutMapping("/{id}/asignar-alumnos")
     public ResponseEntity<?> assignStudents(@PathVariable Long id, @RequestBody List<Student> students) {
-        Optional<Course> course = service.findById(id);
-
-        if (course.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        Course courseDB = course.get();
-        students.forEach(courseDB::addStudent);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(courseDB));
+        return assign(id, students);
     }
 
     @PutMapping("/{id}/eliminar-alumno")
     public ResponseEntity<?> removeStudents(@PathVariable Long id, @RequestBody Student student) {
-        Optional<Course> course = service.findById(id);
-
-        if (course.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        if (student == null || student.getId() == null)
-            return ResponseEntity.notFound().build();
-
-        Course courseDB = course.get();
-        courseDB.deleteStudent(student);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(courseDB));
+        return remove(id, student);
     }
 
     @GetMapping("/student/{id}")
@@ -68,6 +50,54 @@ public class CourseController extends GenericController<Course, CourseService> {
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(service.findCourseByStudentId(id));
+    }
+
+    @PutMapping("/{id}/asignar-examen")
+    public ResponseEntity<?> assignExam(@PathVariable Long id, @RequestBody List<Exam> exams) {
+        return assign(id, exams);
+    }
+
+    @PutMapping("/{id}/eliminar-examen")
+    public ResponseEntity<?> deleteExam(@PathVariable Long id, @RequestBody Exam exam) {
+        return remove(id, exam);
+    }
+
+    /*Generic method to avoid duplicating code*/
+    private ResponseEntity<?> assign(Long id, List<?> genericList) {
+        Optional<Course> optionalCourse = service.findById(id);
+
+        if (optionalCourse.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        Course courseDB = optionalCourse.get();
+
+        genericList.forEach(generic -> {
+            if (generic instanceof Exam) {
+                courseDB.addExam((Exam) generic);
+
+            } else if (generic instanceof Student)
+                courseDB.addStudent((Student) generic);
+        });
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(courseDB));
+    }
+
+    /*Generic method to avoid duplicating code*/
+    private <E> ResponseEntity<?> remove(Long id, E entity) {
+        Optional<Course> course = service.findById(id);
+
+        if (course.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        Course courseDB = course.get();
+
+        if (entity instanceof Student)
+            courseDB.deleteStudent((Student) entity);
+
+        else if (entity instanceof Exam)
+            courseDB.deleteExam((Exam) entity);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(courseDB));
     }
 
 }

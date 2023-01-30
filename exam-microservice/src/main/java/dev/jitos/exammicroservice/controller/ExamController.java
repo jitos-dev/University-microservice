@@ -5,10 +5,7 @@ import dev.jitos.commonsmicroservice.controller.GenericController;
 import dev.jitos.exammicroservice.service.ExamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -36,5 +33,14 @@ public class ExamController extends GenericController<Exam, ExamService> {
         examDb.setQuestions(exam.getQuestions());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(examDb));
+    }
+
+    /*Find and exam by name with the Like operator. The parameter can be included anywhere*/
+    @GetMapping("/filter/{parameter}")
+    public ResponseEntity<?> filter(@PathVariable String parameter) {
+        if (parameter == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(service.findByLikeName(parameter));
     }
 }

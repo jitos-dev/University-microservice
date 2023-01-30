@@ -17,9 +17,11 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+        <!--Esta libreria biene con Spring starter web pero como no lo estamos utilizando tenemos
+        que incluirla nosotros a mano para las anotaciones de la entidad-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
 
         <dependency>
