@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "exams")
@@ -69,5 +70,18 @@ public class Exam {
     public void setQuestions(List<Question> questions) {
         this.questions.clear();
         questions.forEach(this::addQuestions);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Exam exam = (Exam) obj;
+        return id.equals(exam.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
