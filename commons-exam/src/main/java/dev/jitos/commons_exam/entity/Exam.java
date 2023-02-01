@@ -37,10 +37,14 @@ public class Exam {
      * y esto es para que utilice los setter para crearla
      * @JsonManagedReference es para que no de error por la relación con la tabla questions. Esto lo que hace es que
      * que json pueda manejar referencias bidireccionales*/
-    @JsonIgnoreProperties(value = "{exam}", allowSetters = true)
+    @JsonIgnoreProperties(value = {"exam"}, allowSetters = true)
     @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Question> questions;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
     public Exam() {
         this.questions = new ArrayList<>();
