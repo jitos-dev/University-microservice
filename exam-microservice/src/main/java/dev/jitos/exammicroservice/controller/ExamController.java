@@ -11,6 +11,7 @@ import java.util.Optional;
 
 /*La entity Exam y Question la hemos sacado a una librería aparte porque la vamos a utilizar en otros microservicios*/
 @RestController
+@RequestMapping("/exams")
 public class ExamController extends GenericController<Exam, ExamService> {
 
     @PutMapping({"/{id}"})

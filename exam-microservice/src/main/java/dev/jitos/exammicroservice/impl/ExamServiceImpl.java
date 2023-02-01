@@ -24,10 +24,4 @@ public class ExamServiceImpl extends GenericServiceImpl<Exam, ExamRepository> im
     public List<Exam> findByLikeName(String parameter) {
         return repository.findByLikeName(parameter);
     }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Subject> findAllSubjects() {
-    return subjectRepository.findAll();
-    }
 }
