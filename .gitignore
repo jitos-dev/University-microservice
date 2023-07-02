@@ -1,11 +1,3 @@
-*.docx
-
-#arvhivos de Intellij Idea
-.mvn
-mvnw.cmd
-mvnw
-
-
 # Compiled class file
 *.class
 
@@ -35,13 +27,6 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
-#Carpetas y archivos que se suelen crear en Intelli Idea
-.mvn
-src/test
-mvnw.cmd
-mvnw
-
 
 ### STS ###
 .apt_generated
